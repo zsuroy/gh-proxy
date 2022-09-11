@@ -4,6 +4,7 @@
 
 github release、archive以及项目文件的加速项目，支持clone，有Cloudflare Workers无服务器版本以及Python版本
 
+
 ## 演示
 
 [https://suroy.cn/addon/gh-proxy](https://suroy.cn/addon/gh-proxy)
@@ -12,7 +13,6 @@ github release、archive以及项目文件的加速项目，支持clone，有Clo
 
 ![imagea272c95887343279.png](https://img.maocdn.cn/img/2021/04/24/imagea272c95887343279.png)
 
-当然也欢迎[捐赠](#捐赠)以支持作者
 
 ## python版本和cf worker版本差异
 
@@ -22,9 +22,12 @@ github release、archive以及项目文件的加速项目，支持clone，有Clo
 
 ## 使用
 
-直接在copy出来的url前加`https://gh.api.99988866.xyz/`即可
+直接在copy出来的url前加`https://suroy.cn/addon/gh-proxy/`即可
 
 也可以直接访问，在input输入
+
+> 其余推荐接口
+`https://ghproxy.com/`
 
 ***大量使用请自行部署，以上域名仅为演示使用。***
 
@@ -87,6 +90,7 @@ if 'Transfer-Encoding' in headers:
 
 #### 部署运行
 > Tips: the project is cloned to /root/
+> 
 > 可以采用screen 后台运行
 
 1. uwsgi.ini 配置文件Demo(亲测可用)
@@ -123,6 +127,7 @@ python版本默认走服务器（2021.3.27更新）
 
 ## Changelog
 * 2022.09.12 更新说明文档
+* 
 ------------------------[hunshcn]thanks to the original author.
 * 2020.04.10 增加对`raw.githubusercontent.com`文件的支持
 * 2020.04.09 增加Python版本（使用Flask）
