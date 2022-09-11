@@ -6,7 +6,7 @@ github release、archive以及项目文件的加速项目，支持clone，有Clo
 
 ## 演示
 
-[https://gh.api.99988866.xyz/](https://gh.api.99988866.xyz/)
+[https://suroy.cn/addon/gh-proxy](https://suroy.cn/addon/gh-proxy)
 
 演示站为公共服务，如有大规模使用需求请自行部署，演示站有点不堪重负
 
@@ -75,7 +75,7 @@ docker run -d --name="gh-proxy-py" \
 
 安装依赖（请使用python3）
 
-```pip install flask requests```
+```pip install flask requests uwsgi```
 
 按需求修改`app/main.py`的前几项配置
 
@@ -83,6 +83,30 @@ docker run -d --name="gh-proxy-py" \
 ```python3
 if 'Transfer-Encoding' in headers:
     headers.pop('Transfer-Encoding')
+```
+
+#### 部署运行
+> Tips: the project is cloned to /root/
+> 可以采用screen 后台运行
+
+1. uwsgi.ini 配置文件Demo(亲测可用)
+```
+[uwsgi]
+master = true
+http=:80
+chdir = /root/gh-proxy/app/
+wsgi-file=/root/gh-proxy/app/main.py
+callable=app
+processes=4
+threads=2
+buffer-size = 65536
+vacuum=true
+pidfile =/root/gh-proxy/app/uwsgi.pid
+```
+2. 运行
+```bash
+cd /root/gh-proxy/app/
+uwsgi uwsgi.ini
 ```
 
 ### 注意
@@ -98,7 +122,8 @@ python版本默认走服务器（2021.3.27更新）
 如果不够用，可升级到 $5 的高级版本，每月可用 1000 万次请求（超出部分 $0.5/百万次请求）。
 
 ## Changelog
-
+* 2022.09.12 更新说明文档
+------------------------[hunshcn]thanks to the original author.
 * 2020.04.10 增加对`raw.githubusercontent.com`文件的支持
 * 2020.04.09 增加Python版本（使用Flask）
 * 2020.03.23 新增了clone的支持
@@ -106,13 +131,8 @@ python版本默认走服务器（2021.3.27更新）
 
 ## 链接
 
-[我的博客](https://hunsh.net)
+[我的博客](https://suroy.cn)
 
 ## 参考
 
 [jsproxy](https://github.com/EtherDream/jsproxy/)
-
-## 捐赠
-
-![wx.png](https://img.maocdn.cn/img/2021/04/24/image.md.png)
-![ali.png](https://www.helloimg.com/images/2021/04/24/BK9vmb.md.png)
