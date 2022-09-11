@@ -26,8 +26,7 @@ github release、archive以及项目文件的加速项目，支持clone，有Clo
 
 也可以直接访问，在input输入
 
-> 其余推荐接口
-`https://ghproxy.com/`
+> 推荐原作者接口 `[https://ghproxy.com/](https://ghproxy.com/)`
 
 ***大量使用请自行部署，以上域名仅为演示使用。***
 
@@ -108,6 +107,7 @@ vacuum=true
 pidfile =/root/gh-proxy/app/uwsgi.pid
 ```
 2. 运行
+> 注意uwsgi运行时需要以非root用户运行
 ```bash
 cd /root/gh-proxy/app/
 uwsgi uwsgi.ini
